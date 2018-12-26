@@ -1,0 +1,30 @@
+{
+  "name": "api-auto-test",
+  "version": "0.1.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yantrab/api-auto-test.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "Yaniv Trabelsi <yantrab@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "git+https://github.com/yantrab/api-auto-test.git/issues"
+  },
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "supertest": "^3.3.0",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.0",
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.5"
+  }
+}
