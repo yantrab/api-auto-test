@@ -1,11 +1,12 @@
 import * as Mocha from "mocha";
 import { join } from "path";
+import { Test } from "./test";
 
 function runTest(
   url: string,
   tests: {
     name: string;
-    tests: { type: string; query: string; expect: any }[];
+    tests: Test[];
   }[]
 ) {
   return new Promise((reslove, reject) => {

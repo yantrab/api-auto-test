@@ -1,4 +1,4 @@
-declare type Test = {
+export declare type Test = {
   name: string;
   tests: {
     desc: string;
