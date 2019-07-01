@@ -7,12 +7,13 @@ function runTest(
   tests: {
     name: string;
     tests: Test[];
-  }[]
+  }[],
+  sent?: (errors: string[]) => void
 ) {
   return new Promise((reslove, reject) => {
     // tslint:disable-next-line: no-string-literal
-    global["specs"] = { url, tests };
-    const mocha: Mocha = new Mocha();
+    global["specs"] = { url, tests, sent };
+    const mocha: Mocha = new Mocha({ reporterOptions: url });
     mocha.addFile(join(__dirname, "./test"));
     mocha.run(failures => {
       reslove(failures);

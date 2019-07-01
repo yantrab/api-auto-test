@@ -14,13 +14,30 @@ import { expect } from "chai";
 const url: string = global["specs"].url;
 // tslint:disable-next-line: no-string-literal
 const tests: Test[] = global["specs"].tests;
-const request = require("supertest")(url);
-console.log(tests);
 
+// tslint:disable-next-line: no-string-literal
+const sent: (errors: string[]) => void = global["specs"].sent;
+
+const request = require("supertest")(url);
+const failures = [];
 for (const test of tests) {
   describe(test.name, () => {
+    afterEach(function(done) {
+      const title = this.currentTest.title;
+      if (this.currentTest.state === "failed") {
+        failures.push(
+          this.currentTest.title + ":" + this.currentTest.err.message
+        );
+      }
+      done();
+    });
+    after(function(done) {
+      if (sent) {
+        sent(failures);
+      }
+      done();
+    });
     test.tests.forEach(test => {
-      console.log(test.timeout);
       it(test.desc, done => {
         request
           .post("/graphql")
